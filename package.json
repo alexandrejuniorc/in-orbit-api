@@ -4,7 +4,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch src/http/server.ts"
+    "dev": "tsx --env-file .env watch src/http/server.ts",
+    "generate": "drizzle-kit generate",
+    "migrate": "drizzle-kit migrate",
+    "studio": "drizzle-kit studio"
   },
   "keywords": [],
   "author": "",
@@ -13,10 +16,17 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.0",
     "@types/node": "^22.5.4",
+    "drizzle-kit": "^0.24.2",
     "tsx": "^4.19.1",
     "typescript": "^5.6.2"
   },
   "dependencies": {
-    "fastify": "^4.28.1"
+    "drizzle-orm": "^0.33.0",
+    "fastify": "^4.28.1",
+    "postgres": "^3.4.4",
+    "zod": "^3.23.8"
+  },
+  "engines": {
+    "node": "20.17.0"
   }
 }
