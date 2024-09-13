@@ -7,6 +7,7 @@ import {
   validatorCompiler,
   type ZodTypeProvider,
 } from 'fastify-type-provider-zod'
+import { getWeekPendingGoals } from '../features/get-week-pending-goals'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 app.setValidatorCompiler(validatorCompiler)
@@ -28,6 +29,11 @@ app.post(
     await createGoal({ title, desiredWeeklyFrequency })
   }
 )
+
+app.get('/pending-goals', async (request, reply) => {
+  const { pendingGoals } = await getWeekPendingGoals()
+  return { pendingGoals }
+})
 
 app
   .listen({
