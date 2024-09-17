@@ -62,7 +62,7 @@ export async function getWeekSummary() {
     {
       id: number
       title: string
-      completedAt: Date
+      completedAt: string
     }[]
   >
 
@@ -84,6 +84,6 @@ export async function getWeekSummary() {
     .from(goalsCompletedByWeekDay)
 
   return {
-    summary: result,
+    summary: result[0],
   }
 }
